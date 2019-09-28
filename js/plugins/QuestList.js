@@ -57,6 +57,11 @@
  * クエストアイテム名 + (ここの文言).
  * @default \nに失敗しました...
  * 
+ * @param questTextColor
+ * @desc クエストメッセージの表示色（\c[XX]）を設定します、
+ * デフォルトは0で、接尾語は\c[0]で表示されます.
+ * @default 0
+ *
  * @param setQuestSe
  * @desc クエスト受諾時に再生するSEを指定します.
  * @default Decision1
@@ -99,6 +104,7 @@
     var setSuffix = parameters['setSuffix'] || '\nを受けました。';
     var successSuffix = parameters['successSuffix'] || '\nを達成しました！';
     var failedSuffix = parameters['failedSuffix'] || '\nに失敗しました...';
+    var questTextColor = parameters['questTextColor'] || "0";
 
     var setQuestSe = parameters['setQuestSe'] || 'Decision1';
     var successQuestSe = parameters['successQuestSe'] || 'Heal3';
@@ -145,7 +151,7 @@
                 }
                 // 背景を暗くする
                 $gameMessage.setBackground(1);
-                $gameMessage.add($dataItems[questItemId].name + setSuffix);
+                $gameMessage.add("\\c[" + questTextColor + "]" + $dataItems[questItemId].name + "\\c[0]" + setSuffix);
             }
         }
         // スイッチをONにする
@@ -171,14 +177,14 @@
                 }
                 // 背景を暗くする
                 $gameMessage.setBackground(1);
-                $gameMessage.add($dataItems[questItemId].name + successSuffix);
+                $gameMessage.add("\\c[" + questTextColor + "]" + $dataItems[questItemId].name + "\\c[0]" + successSuffix);
             } else if (displayType == "failed") {
                 if (failedQuestSeVolume >= 0) {
                     AudioManager.playSe({"name": failedQuestSe, "volume": failedQuestSeVolume, "pitch":100, "pan":0});
                 }
                 // 背景を暗くする
                 $gameMessage.setBackground(1);
-                $gameMessage.add($dataItems[questItemId].name + failedSuffix);
+                $gameMessage.add("\\c[" + questTextColor + "]" + $dataItems[questItemId].name + "\\c[0]" + failedSuffix);
             }
         }
         // スイッチをONにする
