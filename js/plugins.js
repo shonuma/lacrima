@@ -43,5 +43,6 @@ var $plugins =
 {"name":"YEP_EquipCore","status":false,"description":"v1.18 Allows for the equipment system to be more flexible to\nallow for unique equipment slots per class.","parameters":{"---General---":"","Text Align":"center","Finish Command":"終了","Remove Text":"外す","Remove Icon":"16","Empty Text":"<空き>","Empty Icon":"16","---Rules---":"","Non-Removable Types":"1","Non-Optimized Types":"5 6"}},
 {"name":"YEP_X_EquipCustomize","status":false,"description":"v1.02 (Requires YEP_ItemCore && YEP_EquipCore.js)\nAdds a 'Customize' command to the Equip menu.","parameters":{"Command Name":"Customize","Default Enable":"true"}},
 {"name":"InfoWindow","status":false,"description":"情報表示ウィンドウをメニュー画面に追加するプラグイン","parameters":{"isOnlineSwitch":"6"}},
-{"name":"DataCacheBlocker","status":true,"description":"キャッシュを阻止します。（dataフォルダのみ）","parameters":{}}
+{"name":"DataCacheBlocker","status":true,"description":"キャッシュを阻止します。（dataフォルダのみ）","parameters":{}},
+{"name":"shopInfo","status":true,"description":"ショップで装備品を購入する際、詳細な情報を\r\n表示することができます","parameters":{}}
 ];
