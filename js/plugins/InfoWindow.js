@@ -44,10 +44,10 @@
 	Window_Info.prototype = Object.create(Window_Base.prototype);
 	Window_Info.prototype.constructor = Window_Info;
 	Window_Info.prototype.initialize = function() {
-		var x = 20;
-		var y = 20;
-	    var width = 180;
-	    var height = 108;
+		var x = 940;
+		var y = 28;
+	    var width = 60;
+	    var height = 60;
 	    Window_Base.prototype.initialize.call(this, x, y, width, height);
 	};
 
@@ -59,11 +59,16 @@
 	// ウィンドウに載せる内容
 	Window_Info.prototype.refresh = function() {
 		this.contents.clear();
-		this.changeTextColor(this.textColor(16));
-		this.drawIcon(4, 1, 1);
-		this.drawText("オンライン", 40, 1);
-		this.resetTextColor();
-		this.drawText($gameVariables.value(22) + " 人", 0, this.lineHeight());
+		// this.changeTextColor(this.textColor(16));
+		this.drawIcon(79, 1, 1);
+		// this.drawText("キャンセル", 40, 1);
+		if (TouchInput.x > 940 && TouchInput.x < 1000 && TouchInput.y > 28 && TouchInput.y < 88 && TouchInput.isTriggered()) {
+			console.log('Pressed!');
+			SceneManager.push(Scene_Menu);
+			this._events.moved = false;
+		} else {
+			this._moved = this._events.moved;
+		}
 	};
 	
 	// フォントサイズ
@@ -76,11 +81,11 @@
 	};
     // ウィンドウの余白
 	Window_Info.prototype.standardPadding = function() {
-    	return 18;
+    	return 12;
 	};
 	// ウィンドウの色調
 	Window_Info.prototype.updateTone = function() {
-    	this.setTone(64, 0, 128);
+    	this.setTone(0, 0, 128);
 	};
 	
 })();

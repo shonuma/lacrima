@@ -6980,6 +6980,15 @@ Window_QuestData.prototype.updateKeyScrolling = function() {
     this.scrollOriginUp(this.scrollSpeed() * 4);
   } else if (Input.isPressed('pagedown')) {
     this.scrollOriginDown(this.scrollSpeed() * 4);
+  // for mobile
+  // - Tap upside of window, then scroll up
+  // - Tap downside of window, then scroll down
+  } else if (TouchInput.isPressed()) {
+    if (this.height / 2 < TouchInput.y) {
+      this.scrollOriginDown(this.scrollSpeed());
+    } else {
+      this.scrollOriginUp(this.scrollSpeed());
+    }
   }
 };
 
