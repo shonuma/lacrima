@@ -8,6 +8,10 @@
 @author
 シトラス
 
+@updater
+leo1109
+
+
 */
 Window_ShopStatus.prototype.pageSize = function() {
     return 1;
@@ -16,6 +20,19 @@ Window_ShopStatus.prototype.drawParamName = function(x, y, paramId) {
     this.changeTextColor(this.systemColor());
     this.drawText(TextManager.param(paramId), x, y, 120);
 };
+
+Window_ShopStatus.prototype.getLineHeight = function() {
+    return 29;
+}
+
+Window_ShopStatus.prototype.getBeginOfStatusOffset = function() {
+    return 10;
+}
+
+Window_ShopStatus.prototype.getWidthOffset = function() {
+    return 260;
+} 
+
 Window_ShopStatus.prototype.drawActorEquipInfo = function(x, y, actor) {
     var enabled = actor.canEquip(this._item);
     this.changePaintOpacity(enabled);
@@ -24,11 +41,19 @@ Window_ShopStatus.prototype.drawActorEquipInfo = function(x, y, actor) {
 	//アクターの名前を表示
     this.drawText(actor.name(), x, y - 30, 168);
 	
-	//ステータスの名前を表示
-	for(var i = 0;i < 8;i++){
-		this.drawParamName(x,132 + i*35,i);
+    //ステータスの名前を表示
+    // this.makeFontSmaller();
+    // let defaultFontSizeFunc = Window_Base.prototype.standardFontSize;
+    // let defaultLineHeightFunc = Window_Base.prototype.lineHeight;
+    // console.log(defaultFontSizeFunc);
+    // console.log(defaultLineHeightFunc);
+
+    // this.updatePadding(1);
+	for (var i = 0; i < 8; i++) {
+        // this.makeFontSmaller();
+        this.drawParamName(x,132 - Window_ShopStatus.prototype.getBeginOfStatusOffset() + i*Window_ShopStatus.prototype.getLineHeight(),i);
+        // this.makeFontBigger();
 	}
-	
 	
     var item1 = this.currentEquippedItem(actor, this._item.etypeId);
     if (enabled) {
@@ -37,16 +62,22 @@ Window_ShopStatus.prototype.drawActorEquipInfo = function(x, y, actor) {
 	
 	//現在装備しているアイテムの名前を表示
     this.drawItemName(item1, x, y + this.lineHeight() - 25);
+    // this.makeFontBigger();
+    // this.updatePadding(this.standardPadding());
+    // Window_Base.prototype.standardFontSize = defaultFontSizeFunc;
+    // Window_Base.prototype.lineHeight = defaultLineHeightFunc;
     this.changePaintOpacity(true);
 };
 
 Window_ShopStatus.prototype.drawActorParamChange = function(x, y, actor, item1) {
     var width = this.contents.width - this.textPadding() - x;
     var changeParams = new Array(8);
-	for(var i = 0;i < 8;i++){
+	for(var i = 0;i < 8; i++){
 		changeParams[i] = this._item.params[i] - (item1 ? item1.params[i] : 0);
-		console.log(changeParams[i] );
-		this.changeTextColor(this.paramchangeTextColor(changeParams[i] ) );
-		this.drawText( (changeParams[i] > 0 ? '+' : '') + changeParams[i], x, 60 + y + i*35, width, 'right');
+		console.log(changeParams[i]);
+        this.changeTextColor(this.paramchangeTextColor(changeParams[i] ) );
+        // this.makeFontSmaller();
+        this.drawText( (changeParams[i] > 0 ? '+' : '') + changeParams[i], x, 60 + y - Window_ShopStatus.prototype.getBeginOfStatusOffset() + i*Window_ShopStatus.prototype.getLineHeight(), width - Window_ShopStatus.prototype.getWidthOffset(), 'right');
+        // this.makeFontBigger();
 	}
 };

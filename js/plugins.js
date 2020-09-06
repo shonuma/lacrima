@@ -54,5 +54,6 @@ var $plugins =
 {"name":"YED_WordWrap","status":true,"description":"文章の改行機能を提供します。長文を適切な位置で改行します。","parameters":{"Break Word":"true"}},
 {"name":"DarkPlasma_WordWrapForJapanese","status":true,"description":"ウィンドウ幅を超える日本語文章を自動で折り返す（改行する）プラグイン","parameters":{"Characters Prohibit Line Break Before":"\",)]｝、〕〉》」』】〙〗〟’”｠»ゝゞーァィゥェォッャュョヮヵヶぁぃぅぇぉっゃゅょゎゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇷ゚ㇺㇻㇼㇽㇾㇿ々〻‐゠–〜～?!‼⁇⁈⁉・:;/。.\"","Characters Prohibit Line Break After":"\"([｛〔〈《「『【〘〖〝‘“｟«\"","Kill Word Wrap Tags":"false","Ignore Wordwrap Windows":"[\"Window_QuestList\"]","YEP Quest Journal Buffer Lines":"10"}},
 {"name":"MenuCommandClose","status":true,"description":"メニューコマンドに「閉じる」を追加するプラグイン","parameters":{}},
-{"name":"SNZ_CancelButton","status":true,"description":"キャンセルボタンを画面上に常設。ノーモア２本指タップ！","parameters":{"hideswitch":"8","menuurl":"hon_open_2","cancelurl":"hon_close","btnx":"Graphics.boxWidth - 80","btny":"Graphics.boxHeight - 90"}}
+{"name":"SNZ_CancelButton","status":true,"description":"キャンセルボタンを画面上に常設。ノーモア２本指タップ！","parameters":{"hideswitch":"8","menuurl":"hon_open_2","cancelurl":"hon_close","btnx":"Graphics.boxWidth - 80","btny":"Graphics.boxHeight - 90"}},
+{"name":"Escape100","status":true,"description":"逃げる成功率を100%にする","parameters":{"escapeSwitche":"4"}}
 ];
